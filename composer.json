@@ -42,5 +42,11 @@
     "support": {
         "issues": "https://github.com/apfelm/contao-components-bundle/issues",
         "source": "https://github.com/apfelm/contao-components-bundle"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "contao/manager-plugin": true
+        }
     }
 }
