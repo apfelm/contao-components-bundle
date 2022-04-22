@@ -1,0 +1,46 @@
+{
+    "name": "apfl/contao-components-bundle",
+    "type": "contao-bundle",
+    "description": "Components for Contao Open Source CMS",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Apfl",
+            "homepage": "https://github.com/apflm"
+        }
+    ],
+    "require": {
+        "php": "^7.2 || ^8.0",
+        "contao/core-bundle": "^4.9",
+        "symfony/config": "^4.4 || ^5.1",
+        "symfony/dependency-injection": "^4.4 || ^5.1",
+        "symfony/http-kernel": "^4.4 || ^5.1"
+    },
+    "conflict": {
+        "contao/core": "*",
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.12",
+        "phpunit/phpunit": "^5.7.26",
+        "symfony/phpunit-bridge": "^3.2"
+    },
+    "extra": {
+        "contao-manager-plugin": "Apfl\\ContaoComponentsBundle\\ContaoManager\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Apfl\\ContaoComponentsBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Apfl\\ContaoComponentsBundle\\Tests\\": "tests/"
+        }
+    },
+    "support": {
+        "issues": "https://github.com/apfelm/contao-components-bundle/issues",
+        "source": "https://github.com/apfelm/contao-components-bundle"
+    }
+}
