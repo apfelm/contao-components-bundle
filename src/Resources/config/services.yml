@@ -1,3 +1,3 @@
 services:
-    _defaults:
-        autoconfigure: true
+    Apfl\ContaoComponentsBundle\Library\MessageGenerator:
+        public: true

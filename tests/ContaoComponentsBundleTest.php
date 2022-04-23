@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Apfl\ContaoComponentsBundle\Tests;
 
-use Acme\ContaoComponentsBundle\ContaoComponentsBundle;
+use Apfl\ContaoComponentsBundle\ContaoComponentsBundle;
 use PHPUnit\Framework\TestCase;
 
 class ContaoComponentsBundleTest extends TestCase

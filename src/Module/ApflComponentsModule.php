@@ -2,6 +2,8 @@
 
 namespace Apfl\ContaoComponentsBundle\Module;
 
+use Apfl\ContaoComponentsBundle\Library\MessageGenerator;
+
 class ApflComponentsModule extends \Module
 {
     /**
@@ -36,6 +38,11 @@ class ApflComponentsModule extends \Module
      */
     protected function compile()
     {
-        $this->Template->message = 'Hello World';
+        //$this->Template->message = 'Hello World';
+        $messageGenerator = \Contao\System::getContainer()->get(MessageGenerator::class);
+
+        $message = $messageGenerator->sayHelloTo('World');
+
+        $this->Template->message = $message;
     }
 }
