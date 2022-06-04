@@ -1,0 +1,27 @@
+<div class="textWithBackground block componentSpacing <?= $this->background_color ?> <?php echo $this->class ?>"<?php echo $this->cssID ?>>
+<?php if(!($this->subheading == null && $this->subheading == "") || !($this->headline == null && $this->headline == "")) { ?>
+	<div class="imageAndText_headline contentMaxWidth<?= $this->maximal_width; ?>">
+		<?php if(!($this->headline == null && $this->headline == "")) { ?>
+			<<?php echo $this->hl; ?> class="imageAndText_headline_main">
+				<?php echo $this->headline; ?>
+			</<?php echo $this->hl; ?>>
+		<?php } ?>
+		<?php if(!($this->subheading == null && $this->subheading == "")) { ?>
+			<h<?php $int = (int) filter_var($this->hl, FILTER_SANITIZE_NUMBER_INT);  ; echo $int + 1; ?> class="imageAndText_headline_sub">
+				<?php echo $this->subheading; ?>
+			</h<?php echo $int + 1; ?>>
+		<?php } ?>
+	</div>
+<?php } ?>
+	<div class="textWithBackground_imageContainer">
+		{{picture::<?= \FilesModel::findByUuid($this->image_front)->path;?>?size=10}}
+	</div>
+	<div class="textWithBackground_textContainer contentMaxWidth<?= $this->maximal_width; ?>">
+		<?php echo $this->text ?>
+		<?php if($this->button_check == 1) { ?>
+			<a href="{{link_url::<?php echo $this->button_link ?>}}" class="btn">
+				<?php echo $this->button_text ?>
+			</a>
+		<?php } ?>
+	</div>
+</div>

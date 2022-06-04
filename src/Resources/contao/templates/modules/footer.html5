@@ -1,0 +1,27 @@
+<div class="<?php echo $this->class ?> block <?= $this->karriere_hintergrundfarbe ?>"<?php echo $this->cssID ?>>
+	<div class="componentSpacing contentMaxWidth grid grid-33x33x33 vertical-center">
+		<div class="footer__leftColumn">
+			<?= $this->text ?>
+		</div>
+		<div class="footer__middleColumn">
+			{{picture::<?= \FilesModel::findByUuid($this->apfel_logo)->path;?>?&size=10}}
+			<!-- <a id="scrollTopBtn">Nach oben</a> -->
+		</div>
+		<div class="footer__rightColumn">
+			<!-- <?php foreach(deserialize($this->apfel_socials) as $social) { ?>
+				<div class="column">
+					<a href="<?= $social["link"] ?>" class="column__image" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener">
+						{{picture::<?= \FilesModel::findByUuid($column["icon"])->path;?>}}
+					</a>
+				</div>
+			<?php } ?> -->
+			<?php foreach(deserialize($this->apfel_landingpage_links) as $link) { ?>
+			<div class="column">
+				<a href="<?= $link["link"] ?>" class="column__image hover_underline" title="Facebook" aria-label="Facebook" target="_blank" rel="noopener">
+					<?= $link["label"] ?>
+				</a>
+			</div>
+			<?php } ?>
+		</div>
+	</div>
+</div>

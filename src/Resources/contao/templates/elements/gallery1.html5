@@ -1,0 +1,29 @@
+<div class="gallery componentSpacing <?= $this->background_color ?>"<?php echo $this->cssID ?>>
+	
+<div class="gallery_container contentMaxWidth">
+	<?php if((!($this->headline == null && $this->headline == "")) && (!($this->subheading == null && $this->subheading == ""))) { ?>
+	<div class="gallery_heading">
+	<?php if(!($this->headline == null && $this->headline == "")) { ?>
+			<<?php echo $this->hl; ?>>
+				<?php echo $this->headline; ?>
+			</<?php echo $this->hl; ?>>
+		<?php } ?>
+		<?php if(!($this->subheading == null && $this->subheading == "")) { ?>
+			<h<?php $int = (int) filter_var($this->hl, FILTER_SANITIZE_NUMBER_INT);  ; echo $int + 1; ?>>
+				<?php echo $this->subheading; ?>
+			</h<?php echo $int + 1; ?>>
+		<?php } ?>
+	</div>
+		<?php } ?>
+
+	<div class="gallery_grid">
+		<?php foreach(deserialize($this->gallery_elements) as $benefit) { ?>
+			<div class="gallery_element">
+				<div class="image_container">
+					{{picture::<?= \FilesModel::findByUuid($benefit["image"])->path;?>?class=img-zoomable}}
+				</div>
+			</div>
+		<?php } ?>
+	</div>
+	</div>
+</div>

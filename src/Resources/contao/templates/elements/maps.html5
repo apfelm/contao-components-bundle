@@ -1,0 +1,42 @@
+<script>
+function getCookie(c_name) {
+    var c_value = document.cookie,
+        c_start = c_value.indexOf(" " + c_name + "=");
+    if (c_start == -1) c_start = c_value.indexOf(c_name + "=");
+    if (c_start == -1) {
+        c_value = null;
+    } else {
+        c_start = c_value.indexOf("=", c_start) + 1;
+        var c_end = c_value.indexOf(";", c_start);
+        if (c_end == -1) {
+            c_end = c_value.length;
+        }
+        c_value = unescape(c_value.substring(c_start, c_end));
+    }
+    return c_value;
+}
+	function enableMaps() {
+		$('#maps_container').html('<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10493.62803366802!2d15.0376999!3d48.88858!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5b4db1ac5eda862f!2sMF%20Dekor%20-%20Michaela%20Friedrich!5e0!3m2!1sde!2sat!4v1653044625164!5m2!1sde!2sat" width="100%" height="600" frameborder="0" style="border:0;display:block;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>');
+		$('#maps_container').attr('class','');
+		$('#maps_container').attr('style','');
+	}
+	$('document').ready(function() {
+	if (getCookie('cookie_Google_Maps')){
+	
+		enableMaps();
+	}
+	});
+</script>
+<div id="maps_container" class="maps_container <?= $this->background_color ?>">
+	<div class="maps_content">
+		<div>
+			<?= $this->text_second ?>
+		</div>
+		<div id="confirm-googlemaps" class="btn bkz_btn" onclick="document.cookie = 'cookie_Google_Maps=1';enableMaps();">
+			Google Maps aktivieren
+		</div>
+		<div>
+			<?= $this->text ?>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,79 @@
+
+<!-- indexer::stop -->
+<?php if ($this->apfel_nav_notif_bar): ?>
+  <div class="nav__notifBar contentMaxWidth"><?= $this->apfel_nav_notif_bar ?></div>
+<?php endif; ?>
+<?php if (count(deserialize($this->apfel_infos)) > 0): ?>
+  <div class="nav__infoBar contentMaxWidth">
+  <?php foreach (deserialize($this->apfel_infos) as $info) { ?>
+    <a class="nav__infoBar_info button button--small <?php if($info['isTransparent']==1) echo "isTransparent"; ?>" href="<?= $info['link'] ?>" title="<?= $info['text'] ?>">
+      {{picture::<?= \FilesModel::findByUuid($info['icon'])->path;?>?size=_icon}}
+      <?= $info['text'] ?>
+    </a>
+  <?php } ?>
+  </div>
+<?php endif; ?>
+<div></div>
+<nav class="<?= $this->class ?> navbar"<?= $this->cssID ?><?php if ($this->style): ?> style="<?= $this->style ?>"<?php endif; ?> itemscope itemtype="http://schema.org/SiteNavigationElement">
+        <span class="navbar-toggle" id="js-navbar-toggle">
+          {{picture::<?= \FilesModel::findByUuid($this->apfel_menuicon)->path;?>?class=menuIconMobile&size=_menuicon}}
+          Menü
+        </span>
+  <?php if ($this->headline): ?>
+    <<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+  <?php endif; ?>
+
+  <a href="<?= $this->request ?>#<?= $this->skipId ?>" class="invisible"><?= $this->skipNavigation ?></a>
+  <div class="nav-container" id="js-menu">
+  <ul class="main-nav <?php if (!($this->apfel_fullwidth)): ?>contentMaxWidth<?php endif; ?>">
+    <li>
+      <a href="/" class="logo">
+        {{picture::<?= \FilesModel::findByUuid($this->apfel_logo)->path;?>?class=menuLogo&size=_menulogo}}
+      </a>
+    </li>
+    <?= $this->apfel_sidebar; ?>
+    <?php if($this->apfel_sidebar) {
+      foreach(deserialize($this->apfel_landingpage_links) as $link) { ?>
+        <li>
+          <a href="{{env::url}}/{{env::request}}<?= $link['link'] ?>" class="<?php if($link['isButton']) { echo 'btn'; } else { echo 'hover_underline'; } ?>"><?= $link['label'] ?></a>
+        </li>
+      <?php } ?>
+    <li class="search menuBtn" id="menuBtn" style="margin-left: auto;">
+      <a>
+        {{picture::<?= \FilesModel::findByUuid($this->apfel_menuicon)->path;?>?class=menuIcon&size=_menuicon}}
+      </a>
+    </li>
+      <?php } 
+      else { 
+        echo $this->items;
+      } ?>
+</ul>
+  </div>
+  <a id="<?= $this->skipId ?>" class="invisible">&nbsp;</a>
+    <!-- <div class="search searchBtnMobile" id="searchBtnMobile">
+      <a><img src="https://karriere.lebensmed-baderlach.at/files/content/karriere/search-icon.svg" width="15" alt="Suche"></a>
+  </div> -->
+    <?php if($this->apfel_sidebar) { ?>
+  <div class="sideBar <?php if ($this->apfel_fullwidth_sidebar): ?>fullWidthSidebar<?php endif; ?>" id="sideBar">
+    <div class="sideBarClose menuBtn">
+      {{picture::<?= \FilesModel::findByUuid($this->apfel_menuclose)->path;?>?class=menuIcon&size=_menuclose}}
+    </div>
+    <div class="sideBarContainer">
+      <?= $this->items ?>
+    </div>
+  </div>
+  <?php } ?>
+</nav>
+<!-- <div class="search-bar" id="searchBar">
+  <div class="search-input-container contentMaxWidth">
+    <form id="searchInputForm">
+      <label for="searchInput" id="searchInputLabel" hidden>Suche:</label>
+      <input class="search-input" id="searchInput" aria-labelledby="searchInputLabel" type="text" placeholder="Search..">
+    <div class="searchInputFormActions">
+    <a class="searchBarSubmit" id="searchBarSubmit" title="Suchen"><img src="https://karriere.lebensmed-baderlach.at/files/content/karriere/submit-icon.svg" width="16" alt="Suche durchführen"></a>
+      <a class="searchBarClose" id="searchBarClose" title="Suche schließen"><img src="https://karriere.lebensmed-baderlach.at/files/content/karriere/close-icon.svg" width="16" alt="Suche schließen"></a>
+    </div>
+    </form>
+  </div>
+</div> -->
+<!-- indexer::continue -->

@@ -1,0 +1,33 @@
+<div class="imageAndText block componentSpacing <?= $this->background_color ?>"<?php echo $this->cssID ?>>
+<?php if(!($this->subheading == null && $this->subheading == "") || !($this->headline == null && $this->headline == "")) { ?>
+	<div class="imageAndText_headline contentMaxWidth<?= $this->maximal_width; ?>">
+		<?php if(!($this->headline == null && $this->headline == "")) { ?>
+			<<?php echo $this->hl; ?> class="imageAndText_headline_main">
+				<?php echo $this->headline; ?>
+			</<?php echo $this->hl; ?>>
+		<?php } ?>
+		<?php if(!($this->subheading == null && $this->subheading == "")) { ?>
+			<h<?php $int = (int) filter_var($this->hl, FILTER_SANITIZE_NUMBER_INT);  ; echo $int + 1; ?> class="imageAndText_headline_sub">
+				<?php echo $this->subheading; ?>
+			</h<?php echo $int + 1; ?>>
+		<?php } ?>
+	</div>
+<?php } ?>
+<div class="contentMaxWidth<?= $this->maximal_width; ?> grid grid-<?php echo $this->grid; ?> <?php if($this->reverse_order==1){ echo 'reverse'; }?> <?php if($this->vertical_center == 1) echo 'vertical-center'; ?>">
+	<div class="imageAndText_imageContainer <?php if($this->add_background_image == 0) { echo 'noBgImage'; } ?>">
+		{{picture::<?= \FilesModel::findByUuid($this->image_front)->path;?>?class=imageAndText_imageFront&size=10}}
+		
+		<?php if($this->add_background_image == 1) { ?>
+			{{picture::<?= \FilesModel::findByUuid($this->image_back)->path;?>?class=imageAndText_imageBack&size=10}}
+		<?php } ?>
+	</div>
+	<div class="imageAndText_textContainer">
+		<?= $this->text ?>
+		<?php if($this->button_add == 1) { ?>
+			<a href="{{link_url::<?php echo $this->button_link ?>}}" class="btn">
+				<?php echo $this->button_text ?>
+			</a>
+		<?php } ?>
+	</div>
+		</div>
+</div>
